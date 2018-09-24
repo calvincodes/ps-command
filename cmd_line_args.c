@@ -2,17 +2,21 @@
 // Created by Arpit Jain on 9/23/18.
 //
 
+#include <stdio.h>
 #include <stdbool.h>
 #include "cmd_line_args.h"
 
-struct cmdLineArg {
+void toString(cmdLineArg arg) {
 
-    bool processIdFlag; // Flag for process id argument
-    bool stateFlag; // Default = 0. Flag for state argument
-    bool userTimeFlag; // Default = 1. Flag for userTime argument
-    bool systemTimeFlag; // Default = 1. Flag for userTime argument
-    bool vMemFlag; // Default = 0. Flag for virtual memory
-    bool cmdLineFlag; // Default = 0. Flag for virtual memory
-
-    long pid;
-};
+    printf("{\n"
+               "\t processIdFlag: %d\n"
+               "\t pid: %ld\n"
+               "\t stateFlag: %d\n"
+               "\t userTimeFlag: %d\n"
+               "\t systemTimeFlag: %d\n"
+               "\t vMemFlag: %d\n"
+               "\t cmdLineFlag: %d\n"
+               "\n"
+           "}", arg.processIdFlag, arg.pid,
+               arg.stateFlag, arg.userTimeFlag, arg.systemTimeFlag, arg.vMemFlag, arg.cmdLineFlag);
+}

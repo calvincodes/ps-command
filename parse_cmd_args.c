@@ -10,55 +10,46 @@
 
 int main(int argc, char *argv[]) {
 
-    int opt;
+    int optionAsInt;
 
-    cmdLineArg inputArg = getDefaultInputArg();
+    cmdLineArg unprocessedInputArg = getDefaultInputArg();
 
-    while ((opt = getopt(argc, argv, "p:s::U::S::v::c::")) != -1) {
+    while ((optionAsInt = getopt(argc, argv, "p:s::U::S::v::c::")) != -1) {
 
-        switch (opt) {
+        switch (optionAsInt) {
 
             case 'p':
-                inputArg.processIdFlag = true;
-                inputArg.processIdArg = optarg;
+                unprocessedInputArg.processIdFlag = true;
+                unprocessedInputArg.processIdArg = optarg;
                 break;
 
             case 's':
-                inputArg.stateOptArg = optarg;
+                unprocessedInputArg.stateOptArg = optarg;
                 break;
 
             case 'U':
-                inputArg.userTimeOptArg = optarg;
+                unprocessedInputArg.userTimeOptArg = optarg;
                 break;
 
             case 'S':
-                inputArg.systemTimeOptArg = optarg;
+                unprocessedInputArg.systemTimeOptArg = optarg;
                 break;
 
             case 'v':
-                inputArg.vMemOptArg = optarg;
+                unprocessedInputArg.vMemOptArg = optarg;
                 break;
 
             case 'c':
-                inputArg.cmdLineOptArg = optarg;
+                unprocessedInputArg.cmdLineOptArg = optarg;
                 break;
 
-            default: /* '?' */
-                fprintf(stderr, "Usage: %s [-t nsecs] [-n] name\n",
-                        argv[0]);
+            default: // Error Input Option
+                fprintf(stderr, "Usage: %s [-p <pid>] [-s] [-U] [-S] [-v] [-c]\n", argv[0]);
                 exit(EXIT_FAILURE);
         }
     }
 
-    toString(inputArg);
-
-//    if (optind >= argc) {
-//        fprintf(stderr, "Expected argument after options\n");
-//        exit(EXIT_FAILURE);
-//    }
-
-//    printf("name argument = %s\n", argv[optind]);
-//    printf("t argument = %s\n", argv[optind]);
+    toString(unprocessedInputArg);
 
     exit(EXIT_SUCCESS);
 }

@@ -21,13 +21,13 @@ cmdLineArg getDefaultInputArg() {
     defaultInputArg.userTimeFlag = 1;
     defaultInputArg.userTimeOptArg = NULL;
 
-    defaultInputArg.systemTimeFlag = 1;
+    defaultInputArg.systemTimeFlag = 0;
     defaultInputArg.systemTimeOptArg = NULL;
 
     defaultInputArg.vMemFlag = 0;
     defaultInputArg.vMemOptArg = NULL;
 
-    defaultInputArg.cmdLineFlag = 0;
+    defaultInputArg.cmdLineFlag = 1;
     defaultInputArg.cmdLineOptArg = NULL;
 
     return defaultInputArg;

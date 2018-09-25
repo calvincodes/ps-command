@@ -20,12 +20,10 @@ int main(int argc, char *argv[]) {
 
             case 'p':
                 inputArg.processIdFlag = true;
-                //TODO: This can actually be a character also. Make changes in cmdLineArg.
-                inputArg.pid = atoi(optarg);
+                inputArg.processIdArg = optarg;
                 break;
 
             case 's':
-                inputArg.stateFlag = 1;
                 inputArg.stateOptArg = optarg;
                 break;
 
@@ -34,17 +32,14 @@ int main(int argc, char *argv[]) {
                 break;
 
             case 'S':
-                inputArg.systemTimeFlag = '1';
                 inputArg.systemTimeOptArg = optarg;
                 break;
 
             case 'v':
-                inputArg.vMemFlag = '1';
                 inputArg.vMemOptArg = optarg;
                 break;
 
             case 'c':
-                inputArg.cmdLineFlag = '1';
                 inputArg.cmdLineOptArg = optarg;
                 break;
 

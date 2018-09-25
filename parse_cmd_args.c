@@ -8,41 +8,55 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <stdbool.h>
+#include <string.h>
 #include "cmd_line_args.h"
 
 int main(int argc, char *argv[]) {
 
     int opt;
+    char *stateOptArg, *userTimeOptArg, *systemTimeOptArg, *vMemOptArg, *cmdLineOptArg;
 
-    bool processIdFlag = 0; // Flag for process id argument
-    bool stateFlag = 0; // Default = 0. Flag for state argument
-    bool userTimeFlag = 1; // Default = 1. Flag for userTime argument
-    bool systemTimeFlag = 1; // Default = 1. Flag for userTime argument
-    long pid;
+    cmdLineArg inputArg = getDefaultInputArg();
 
-    while ((opt = getopt(argc, argv, "p:s::U::S::vc")) != -1) {
+    while ((opt = getopt(argc, argv, "p:s::U::S::v::c::")) != -1) {
 
         switch (opt) {
 
             case 'p':
-                processIdFlag = 1;
-                pid = atoi(optarg);
-                printf("Detected p with process id %lu \n", pid);
+                inputArg.processIdFlag = true;
+                //TODO: This can actually be a character also. Make changes in cmdLineArg.
+                inputArg.pid = atoi(optarg);
                 break;
 
             case 's':
-                stateFlag = 1;
-                printf("Detected s \n");
+                inputArg.stateFlag = 1;
+                stateOptArg = optarg;
+                if (*stateOptArg != '-') {
+                    // TODO: Handle invalid argument passed
+                    printf("Invalid argument for s \n");
+                }
                 break;
 
             case 'U':
-                userTimeFlag = '0';
-                printf("Detected U \n");
+                userTimeOptArg = optarg;
+                if (*userTimeOptArg != '-') {
+
+                }
+                if (strcmp(userTimeOptArg, "-")) {
+                    inputArg.userTimeFlag = '0';
+                }
                 break;
 
             case 'S':
-                systemTimeFlag = '0';
-                printf("Detected S \n");
+                inputArg.systemTimeFlag = '1';
+                break;
+
+            case 'v':
+                inputArg.vMemFlag = '1';
+                break;
+
+            case 'c':
+                inputArg.cmdLineFlag = '1';
                 break;
 
             default: /* '?' */
@@ -51,6 +65,8 @@ int main(int argc, char *argv[]) {
                 exit(EXIT_FAILURE);
         }
     }
+
+    toString(inputArg);
 
 //    if (optind >= argc) {
 //        fprintf(stderr, "Expected argument after options\n");

@@ -12,12 +12,23 @@ cmdLineArg getDefaultInputArg() {
     cmdLineArg defaultInputArg;
 
     defaultInputArg.processIdFlag = 0;
+    defaultInputArg.processIdArg = NULL;
     defaultInputArg.pid = -1L; // As PIDs are always non negative, i.e. >= 0, hence using default = -1
+
     defaultInputArg.stateFlag = 0;
+    defaultInputArg.stateOptArg = NULL;
+
     defaultInputArg.userTimeFlag = 1;
+    defaultInputArg.userTimeOptArg = NULL;
+
     defaultInputArg.systemTimeFlag = 1;
+    defaultInputArg.systemTimeOptArg = NULL;
+
     defaultInputArg.vMemFlag = 0;
+    defaultInputArg.vMemOptArg = NULL;
+
     defaultInputArg.cmdLineFlag = 0;
+    defaultInputArg.cmdLineOptArg = NULL;
 
     return defaultInputArg;
 }

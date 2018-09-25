@@ -1,9 +1,6 @@
 //
+// Created by Arpit Jain on 9/22/18.
 //
-//
-/**
- * Created by Arpit Jain on 9/22/18.
- */
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdio.h>
@@ -14,7 +11,6 @@
 int main(int argc, char *argv[]) {
 
     int opt;
-    char *stateOptArg, *userTimeOptArg, *systemTimeOptArg, *vMemOptArg, *cmdLineOptArg;
 
     cmdLineArg inputArg = getDefaultInputArg();
 
@@ -30,33 +26,26 @@ int main(int argc, char *argv[]) {
 
             case 's':
                 inputArg.stateFlag = 1;
-                stateOptArg = optarg;
-                if (*stateOptArg != '-') {
-                    // TODO: Handle invalid argument passed
-                    printf("Invalid argument for s \n");
-                }
+                inputArg.stateOptArg = optarg;
                 break;
 
             case 'U':
-                userTimeOptArg = optarg;
-                if (*userTimeOptArg != '-') {
-
-                }
-                if (strcmp(userTimeOptArg, "-")) {
-                    inputArg.userTimeFlag = '0';
-                }
+                inputArg.userTimeOptArg = optarg;
                 break;
 
             case 'S':
                 inputArg.systemTimeFlag = '1';
+                inputArg.systemTimeOptArg = optarg;
                 break;
 
             case 'v':
                 inputArg.vMemFlag = '1';
+                inputArg.vMemOptArg = optarg;
                 break;
 
             case 'c':
                 inputArg.cmdLineFlag = '1';
+                inputArg.cmdLineOptArg = optarg;
                 break;
 
             default: /* '?' */

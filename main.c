@@ -29,14 +29,14 @@ int splitInput(char input[]){
 
 }
 
-
-int main() {
-    char *input = readInput();
-    int sizeOfInput = getSizeOfInput(input);
-    if(validateInput(input) != 0){
-        printf("Invalid Input");
-    }
-
-
-    return 0;
-}
+//
+//int main() {
+//    char *input = readInput();
+//    int sizeOfInput = getSizeOfInput(input);
+//    if(validateInput(input) != 0){
+//        printf("Invalid Input");
+//    }
+//
+//
+//    return 0;
+//}

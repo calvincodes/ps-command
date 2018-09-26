@@ -1,10 +1,12 @@
 #include <stdio.h>
 #include <stdbool.h>
-#include "parser.h"
 #include "struct_output.h"
 #include "read.h"
 #include <stdlib.h>
 #include <string.h>
+#include "input_parser.h"
+#include "input_validator.h"
+
 int validateInput(char input[]){
     return true;
 }
@@ -44,7 +46,8 @@ int compare(const void * a, const void * b)
 
 int main(int argc, char *argv[]) {
 
-    cmdLineArg unprocessedInput = parsedAndGetUnprocessedInput(argc, argv);
+    cmdLineArg unprocessedInput = parseAndGetUnprocessedInput(argc, argv);
+    validateUnprocessedInput(unprocessedInput);
     struct_output *output = read_directory();
     struct_output output_array[output->size];
     unsigned size = output->size;
@@ -57,4 +60,5 @@ int main(int argc, char *argv[]) {
     printf("\n");
 
 }
+
 

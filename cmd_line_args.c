@@ -6,13 +6,17 @@
 #include <stdbool.h>
 #include "cmd_line_args.h"
 
-// TODO: Check how to define global variable for default value of PID
+/**
+ * This method created a cmdLineArg with default values and all argument pointers as null
+ * @return cmdLineArg with default values and all argument pointers as null
+ */
 cmdLineArg getDefaultInputArg() {
 
     cmdLineArg defaultInputArg;
 
     defaultInputArg.processIdFlag = false;
     defaultInputArg.processIdArg = NULL;
+    // TODO: Add default value of PID to global.h
     defaultInputArg.pid = -1L; // As PIDs are always non negative, i.e. >= 0, hence using default = -1
 
     defaultInputArg.stateFlag = false;

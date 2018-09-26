@@ -26,31 +26,31 @@ void validateUnprocessedInput(cmdLineArg unprocessedInputArg) {
     }
 
     if (unprocessedInputArg.stateOptArg != NULL
-            && strcmp(unprocessedInputArg.stateOptArg, "-") != 0) {
+        && strcmp(unprocessedInputArg.stateOptArg, "-") != 0) {
         fprintf(stderr, "Argument for s should be - only\n");
         exit(EXIT_FAILURE);
     }
 
     if (unprocessedInputArg.userTimeOptArg != NULL
-            && strcmp(unprocessedInputArg.userTimeOptArg, "-") != 0) {
+        && strcmp(unprocessedInputArg.userTimeOptArg, "-") != 0) {
         fprintf(stderr, "Argument for U should be - only\n");
         exit(EXIT_FAILURE);
     }
 
     if (unprocessedInputArg.systemTimeOptArg != NULL
-            && strcmp(unprocessedInputArg.systemTimeOptArg, "-") != 0) {
+        && strcmp(unprocessedInputArg.systemTimeOptArg, "-") != 0) {
         fprintf(stderr, "Argument for S should be - only\n");
         exit(EXIT_FAILURE);
     }
 
     if (unprocessedInputArg.vMemOptArg != NULL
-            && strcmp(unprocessedInputArg.vMemOptArg, "-") != 0) {
+        && strcmp(unprocessedInputArg.vMemOptArg, "-") != 0) {
         fprintf(stderr, "Argument for v should be - only\n");
         exit(EXIT_FAILURE);
     }
 
     if (unprocessedInputArg.cmdLineOptArg != NULL
-            && strcmp(unprocessedInputArg.cmdLineOptArg, "-") != 0) {
+        && strcmp(unprocessedInputArg.cmdLineOptArg, "-") != 0) {
         fprintf(stderr, "Argument for c should be - only\n");
         exit(EXIT_FAILURE);
     }

@@ -7,12 +7,13 @@
 
 void print(struct struct_output output, cmdLineArg cmd_args) {
 
-    printf("%s", output.pid);
-    if (cmd_args.stateFlag) printf("\t%s", output.status);
-    if (cmd_args.userTimeFlag) printf("\t%s", output.utime);
-    if (cmd_args.systemTimeFlag) printf("\t%s", output.stime);
-    if (cmd_args.vMemFlag) printf("\t%s", output.virtual_memory);
-    if (cmd_args.cmdLineFlag) printf("\t%s", output.command_line);
+    printf("%-*s:",7, output.pid);
+    if (cmd_args.stateFlag) printf("%-*s",3, output.status);
+    if (cmd_args.userTimeFlag) printf("utime=%-*s",4, output.utime);
+    if (cmd_args.systemTimeFlag) printf("stime=%-*s",7, output.stime);
+    if (cmd_args.vMemFlag) printf("\tvmemory=%-*s",10, output.virtual_memory);
+    if (cmd_args.cmdLineFlag) printf("\t[%-s]", output.command_line);
+    printf("\n");
 }
 
 void print_test(struct struct_output output) {
@@ -26,11 +27,4 @@ void print_test(struct struct_output output) {
     printf("\t%s", output.command_line);
 }
 
-void print_header(cmdLineArg cmd_args) {
-    printf("%s", "PID");
-    if (cmd_args.stateFlag) printf("\t%s", "STATUS");
-    if (cmd_args.userTimeFlag) printf("\t%s", "UTIME");
-    if (cmd_args.systemTimeFlag) printf("\t%s", "STIME");
-    if (cmd_args.vMemFlag) printf("\t%s", "VMEM");
-    if (cmd_args.cmdLineFlag) printf("\t%s\n", "CMD");
-}
+

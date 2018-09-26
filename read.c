@@ -15,14 +15,14 @@
 #include "global.h"
 //#include "struct_output.h"
 
-bool is_valid_proc_directory(char *name, cmdLineArg postProcessedInput){
-    if(postProcessedInput.pid > -1){
-        if(strcmp(postProcessedInput.processIdArg, name) != 0){
+bool is_valid_proc_directory(char *name, cmdLineArg postProcessedInput) {
+    if (postProcessedInput.pid > -1) {
+        if (strcmp(postProcessedInput.processIdArg, name) != 0) {
             return false;
         }
     }
-    while(*name != '\0'){
-        if(*name < ASCII_OF_0 || *name > ASCII_OF_9) {
+    while (*name != '\0') {
+        if (*name < ASCII_OF_0 || *name > ASCII_OF_9) {
             return false;
         }
         name++;
@@ -30,41 +30,41 @@ bool is_valid_proc_directory(char *name, cmdLineArg postProcessedInput){
     return true;
 }
 
-char* read_file(char directory_name[], char file_name[CHAR_SIZE]){
-    FILE* file_pointer;
-    char full_path[CHAR_SIZE] ;
+char *read_file(char directory_name[], char file_name[CHAR_SIZE]) {
+    FILE *file_pointer;
+    char full_path[CHAR_SIZE];
     strcpy(full_path, FULL_PATH);
     char *line = NULL;
     size_t len = 0;
     strcat(full_path, directory_name);
-    strcat(full_path , "/");
-    strcat(full_path,file_name);
+    strcat(full_path, "/");
+    strcat(full_path, file_name);
     file_pointer = fopen(full_path, "r");
-    if(file_pointer != NULL){
-        getline(&line, &len, file_pointer) ;
-    } else{
+    if (file_pointer != NULL) {
+        getline(&line, &len, file_pointer);
+    } else {
         perror("Failed to read the file");
     }
     fclose(file_pointer);
     return line;
 }
 
-char* get_process_uid(char *directory_name, char *file_name){
-    FILE* file_pointer;
-    char full_path[CHAR_SIZE] ;
+char *get_process_uid(char *directory_name, char *file_name) {
+    FILE *file_pointer;
+    char full_path[CHAR_SIZE];
     strcpy(full_path, FULL_PATH);
     char *line = NULL;
     size_t len = 0;
     strcat(full_path, directory_name);
-    strcat(full_path , "/");
-    strcat(full_path,file_name);
+    strcat(full_path, "/");
+    strcat(full_path, file_name);
     file_pointer = fopen(full_path, "r");
     int index = 1;
-    if(file_pointer != NULL){
-        while (getline(&line, &len, file_pointer) != -1 && index < 9){
+    if (file_pointer != NULL) {
+        while (getline(&line, &len, file_pointer) != -1 && index < 9) {
             index++;
         }
-    } else{
+    } else {
         perror("Failed to read the file");
     }
     char *string_tokens;
@@ -77,23 +77,23 @@ char* get_process_uid(char *directory_name, char *file_name){
     return string_tokens;
 }
 
-bool is_process_belongs_to_user(char *user_id,char directory_name[], cmdLineArg postProcessedInput ){
-    if(postProcessedInput.pid == -1){
+bool is_process_belongs_to_user(char *user_id, char directory_name[], cmdLineArg postProcessedInput) {
+    if (postProcessedInput.pid == -1) {
         char *process_uid = get_process_uid(directory_name, STATUS_FILE_NAME);
-        if (strcmp(user_id, process_uid) != 0){
+        if (strcmp(user_id, process_uid) != 0) {
             return false;
         }
     }
     return true;
 }
 
-struct struct_output* read_directory(cmdLineArg postProcessedInput){
+struct struct_output *read_directory(cmdLineArg postProcessedInput) {
     // Holds directory structure of /proc folder
     DIR *proc;
     struct dirent *subDirectory;
     struct struct_output *output = NULL;
     struct struct_output *head = NULL;
-    unsigned size =0;
+    unsigned size = 0;
     unsigned int uid_t = getuid();
     char uid[CHAR_SIZE];
     sprintf(uid, "%d", uid_t);
@@ -106,12 +106,13 @@ struct struct_output* read_directory(cmdLineArg postProcessedInput){
      */
     // Opening directory /proc
     proc = opendir(FULL_PATH);
-    while((subDirectory = readdir(proc)) != NULL){
+    while ((subDirectory = readdir(proc)) != NULL) {
 
         /*
          * Ignore links to current and previous directory
          */
-        if(strcmp(subDirectory->d_name, CURRENT_DIRECTORY) == 0 || strcmp(subDirectory->d_name, PREVIOUS_DIRECTORY) == 0){
+        if (strcmp(subDirectory->d_name, CURRENT_DIRECTORY) == 0 ||
+            strcmp(subDirectory->d_name, PREVIOUS_DIRECTORY) == 0) {
             continue;
         }
 
@@ -132,15 +133,15 @@ struct struct_output* read_directory(cmdLineArg postProcessedInput){
          */
         if (S_ISDIR(entry_info.st_mode) &&
             is_valid_proc_directory(subDirectory->d_name, postProcessedInput)
-            && is_process_belongs_to_user(uid, subDirectory->d_name,postProcessedInput )) {
+            && is_process_belongs_to_user(uid, subDirectory->d_name, postProcessedInput)) {
 
             char *line = read_file(subDirectory->d_name, STAT_FILE_NAME);
             char *string_tokens;
             struct struct_output *node = malloc(sizeof *node);
             string_tokens = strtok(line, " ");
             int index = 1; //index of the values in the file
-            while (string_tokens != NULL){
-                switch (index){
+            while (string_tokens != NULL) {
+                switch (index) {
                     case 1:
                         node->pid = string_tokens;
                         break;
@@ -162,21 +163,23 @@ struct struct_output* read_directory(cmdLineArg postProcessedInput){
             }
             line = read_file(subDirectory->d_name, CMDLINE_FILE_NAME);
             node->command_line = line;
-            if(!output){
+            if (!output) {
                 output = node;
                 head = node;
                 output->next = NULL;
                 size++;
-            } else{
+            } else {
                 output->next = node;
-                node ->next = NULL;
-                output = output ->next;
+                node->next = NULL;
+                output = output->next;
                 size++;
             }
         }
 
     }
-    head->size = size;
+    if(head != NULL) {
+        head->size = size;
+    }
     closedir(proc);
-    return  head;
+    return head;
 }

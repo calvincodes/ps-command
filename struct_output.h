@@ -26,4 +26,3 @@ struct struct_output {
 
 void print(struct struct_output output, cmdLineArg cmd_args);
 void print_test(struct struct_output output);
-void print_header(cmdLineArg cmd_args);

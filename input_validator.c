@@ -17,7 +17,7 @@ void validateUnprocessedInput(cmdLineArg unprocessedInputArg) {
             exit(EXIT_FAILURE);
         }
 
-        int processId = atoi (unprocessedInputArg.processIdArg);
+        int processId = atoi(unprocessedInputArg.processIdArg);
         if (processId == 0 && unprocessedInputArg.processIdArg[0] != '0') {
             fprintf(stderr, "Process id should be a number");
             exit(EXIT_FAILURE);
@@ -25,31 +25,31 @@ void validateUnprocessedInput(cmdLineArg unprocessedInputArg) {
     }
 
     if (unprocessedInputArg.stateOptArg != NULL
-            && *unprocessedInputArg.stateOptArg != '-') {
+        && *unprocessedInputArg.stateOptArg != '-') {
         fprintf(stderr, "Argument for s should be - only");
         exit(EXIT_FAILURE);
     }
 
     if (unprocessedInputArg.userTimeOptArg != NULL
-            && *unprocessedInputArg.userTimeOptArg != '-') {
+        && *unprocessedInputArg.userTimeOptArg != '-') {
         fprintf(stderr, "Argument for U should be - only");
         exit(EXIT_FAILURE);
     }
 
     if (unprocessedInputArg.systemTimeOptArg != NULL
-            && *unprocessedInputArg.systemTimeOptArg != '-') {
+        && *unprocessedInputArg.systemTimeOptArg != '-') {
         fprintf(stderr, "Argument for S should be - only");
         exit(EXIT_FAILURE);
     }
 
     if (unprocessedInputArg.vMemOptArg != NULL
-            && *unprocessedInputArg.vMemOptArg != '-') {
+        && *unprocessedInputArg.vMemOptArg != '-') {
         fprintf(stderr, "Argument for v should be - only");
         exit(EXIT_FAILURE);
     }
 
     if (unprocessedInputArg.cmdLineOptArg != NULL
-            && *unprocessedInputArg.cmdLineOptArg != '-') {
+        && *unprocessedInputArg.cmdLineOptArg != '-') {
         fprintf(stderr, "Argument for c should be - only");
         exit(EXIT_FAILURE);
     }

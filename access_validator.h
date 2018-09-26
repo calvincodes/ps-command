@@ -9,7 +9,7 @@
 
 #ifndef HW1_CMD_LINE_ARGS_H
 #define HW1_CMD_LINE_ARGS_H
-#include "cmd_line_args.h"
+#include "struct_input.h"
 #endif //HW1_CMD_LINE_ARGS_H
 
 
@@ -17,5 +17,5 @@
 
 
 char *get_process_uid(char *directory_name, char *file_name);
-bool is_valid_proc_directory(char *name, cmdLineArg postProcessedInput);
-bool is_process_belongs_to_user(char *user_id, char directory_name[], cmdLineArg postProcessedInput);
+bool is_valid_proc_directory(char *name, struct_input postProcessedInput);
+bool is_process_belongs_to_user(char *user_id, char directory_name[], struct_input postProcessedInput);

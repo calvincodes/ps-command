@@ -14,4 +14,4 @@
 
 #endif //HW1_PARSE_CMD_ARGS_H
 
-cmdLineArg parseAndGetUnprocessedInput(int argc, char **argv);
+struct_input parse_and_get_unprocessed_input(int argc, char **argv);

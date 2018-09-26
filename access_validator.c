@@ -41,7 +41,7 @@ char *get_process_uid(char *directory_name, char *file_name) {
     return string_tokens;
 }
 
-bool is_process_belongs_to_user(char *user_id, char directory_name[], cmdLineArg postProcessedInput) {
+bool is_process_belongs_to_user(char *user_id, char directory_name[], struct_input postProcessedInput) {
     if (postProcessedInput.pid == -1) {
         char *process_uid = get_process_uid(directory_name, STATUS_FILE);
         if (strcmp(user_id, process_uid) != 0) {
@@ -51,7 +51,7 @@ bool is_process_belongs_to_user(char *user_id, char directory_name[], cmdLineArg
     return true;
 }
 
-bool is_valid_proc_directory(char *name, cmdLineArg postProcessedInput) {
+bool is_valid_proc_directory(char *name, struct_input postProcessedInput) {
     if (postProcessedInput.pid > -1) {
         if (strcmp(postProcessedInput.processIdArg, name) != 0) {
             return false;

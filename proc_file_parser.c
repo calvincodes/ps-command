@@ -2,10 +2,9 @@
 // Created by Anshu on 9/26/18.
 //
 
-
 #include "proc_file_parser.h"
-
 #include <string.h>
+
 void parse_stat_file(struct struct_output *node, char *line){
     char *string_tokens;
     string_tokens = strtok(line, " ");

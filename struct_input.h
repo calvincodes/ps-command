@@ -8,7 +8,7 @@
 
 #include <stdbool.h>
 
-typedef struct cmdLineArg {
+typedef struct struct_input {
 
     bool processIdFlag; // Flag for process id argument
     char *processIdArg;
@@ -29,8 +29,8 @@ typedef struct cmdLineArg {
     bool cmdLineFlag; // Default = 1. Flag for command-line
     char *cmdLineOptArg;
 
-} cmdLineArg;
+} struct_input;
 
-cmdLineArg getDefaultInputArg();
+struct_input get_default_input_arg();
 
-void toString(cmdLineArg arg);
+void to_string(struct_input arg);

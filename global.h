@@ -6,9 +6,6 @@
 
 #endif //HW1_GLOBAL_H
 
-
-
-
 int SIZE_OF_CHAR = 255;
 char FULL_PATH[]  =  "/proc/";
 char STAT_FILE_NAME[] = "stat";

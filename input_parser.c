@@ -54,5 +54,10 @@ cmdLineArg parseAndGetUnprocessedInput(int argc, char **argv) {
         }
     }
 
+    if (argc > optind) {
+        fprintf(stderr, "Redundant argument %s passed\n", argv[argc-1]);
+        exit(EXIT_FAILURE);
+    }
+
     return unprocessedInputArg;
 }

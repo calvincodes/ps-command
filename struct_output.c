@@ -7,8 +7,6 @@
 
 void print(struct struct_output output, cmdLineArg cmd_args) {
 
-//    printf("\nAnshu");
-    print_header(cmd_args);
     if(cmd_args.pid > -1) printf("%s", output.pid);
     if(cmd_args.stateFlag) printf("\t%s", output.status);
     if(cmd_args.userTimeFlag) printf("\t%s",output.utime);

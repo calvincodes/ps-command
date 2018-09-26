@@ -15,6 +15,7 @@ int ASCII_OF_9 = 57;
 char FULL_PATH[]  =  "/proc/";
 char STAT_FILE_NAME[] = "stat";
 char CMDLINE_FILE_NAME[] = "cmdline";
+char STATUS_FILE_NAME[] = "status";
 char CURRENT_DIRECTORY[] = ".";
 char PREVIOUS_DIRECTORY[] = "..";
 

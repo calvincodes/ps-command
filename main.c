@@ -27,18 +27,18 @@ int main(int argc, char *argv[]) {
     cmdLineArg unprocessedInput = parseAndGetUnprocessedInput(argc, argv);
     validateUnprocessedInput(unprocessedInput);
     cmdLineArg postProcessedInput = getPostProcessedInput(unprocessedInput);
-    struct struct_output *output = read_directory();
+    struct struct_output *output = read_directory(postProcessedInput);
     struct struct_output output_array[output->size];
     unsigned size = output->size;
     int index = 0;
     while(output != NULL){
-
         output_array[index] = *output;
         output = output->next;
         index++;
     }
     qsort(output_array, size, sizeof(struct struct_output), compare_struct);
 
+    print_header(postProcessedInput);
     for(int i=0;i<size;i++){
         print(output_array[i], postProcessedInput);
     }

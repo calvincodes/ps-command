@@ -14,4 +14,4 @@
 
 #endif //HW1_READ_H
 
-struct struct_output* read_directory();
+struct struct_output* read_directory(cmdLineArg postProcessedInput);

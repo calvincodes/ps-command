@@ -8,6 +8,12 @@
 #include <string.h>
 #include "cmd_line_args.h"
 
+/**
+ * This methods parses the input arguments and formulates a corresponding cmdLineArg object
+ * @param argc count of arguments passed along with the command
+ * @param argv array of arguments passed along with the command
+ * @return cmdLineArg object as per the user input
+ */
 cmdLineArg parseAndGetUnprocessedInput(int argc, char **argv) {
 
     int optionAsInt;
@@ -54,6 +60,10 @@ cmdLineArg parseAndGetUnprocessedInput(int argc, char **argv) {
         }
     }
 
+    // INTERESTING ONE HERE :)
+    // In case the user passes some redundant arguments, say 537ps -p 123 -v ABC
+    // now, for this case, the count of arguments passed > the count of (option + option argument) read.
+    // So, putting the same as a if clause to detect this anomaly and report error.
     if (argc > optind) {
         fprintf(stderr, "Redundant argument %s passed\n", argv[argc-1]);
         exit(EXIT_FAILURE);

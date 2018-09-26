@@ -1,3 +1,5 @@
+#ifndef HW1_STRUCT_OUTPUT_H
+#define HW1_STRUCT_OUTPUT_H
 #include <stdio.h>
 #include <stdbool.h>
 #include "struct_output.h"
@@ -6,6 +8,8 @@
 #include <string.h>
 #include "input_parser.h"
 #include "input_validator.h"
+
+#endif
 
 int validateInput(char input[]){
     return true;
@@ -58,6 +62,9 @@ int main(int argc, char *argv[]) {
     }
     qsort(output_array, size, sizeof(struct struct_output), compare);
     printf("\n");
+    for(int i=0;i<size;i++){
+        print(output_array[i], unprocessedInput);
+    }
 
 }
 

@@ -39,7 +39,7 @@ char *read_file(char directory_name[], char file_name[SIZE_OF_CHAR]) {
 struct struct_output *read_directory(cmdLineArg postProcessedInput) {
     // Holds directory structure of /proc folder
     DIR *proc;
-    struct dirent *subDirectory;
+    struct dirent *entry;
     struct struct_output *output = NULL;
     struct struct_output *head = NULL;
     unsigned size = 0;
@@ -52,13 +52,13 @@ struct struct_output *read_directory(cmdLineArg postProcessedInput) {
      */
     // Opening directory /proc
     proc = opendir(FULL_PATH);
-    while ((subDirectory = readdir(proc)) != NULL) {
+    while ((entry = readdir(proc)) != NULL) {
 
         /*
          * Ignore links to current and previous directory
          */
-        if (strcmp(subDirectory->d_name, CURRENT_DIRECTORY) == 0 ||
-            strcmp(subDirectory->d_name, PREVIOUS_DIRECTORY) == 0) {
+        if (strcmp(entry->d_name, CURRENT_DIRECTORY) == 0 ||
+            strcmp(entry->d_name, PREVIOUS_DIRECTORY) == 0) {
             continue;
         }
 
@@ -70,7 +70,7 @@ struct struct_output *read_directory(cmdLineArg postProcessedInput) {
          * Third argument - Information about the entry being read
          * If if fails then that means you don't have enough permission to view the directory
          */
-        if (fstatat(dirfd(proc), subDirectory->d_name, &entry_info, 0) < 0) {
+        if (fstatat(dirfd(proc), entry->d_name, &entry_info, 0) < 0) {
             continue;
         }
         /*
@@ -78,15 +78,15 @@ struct struct_output *read_directory(cmdLineArg postProcessedInput) {
          * And file_name should be all number
          */
         if (S_ISDIR(entry_info.st_mode) &&
-            is_valid_proc_directory(subDirectory->d_name, postProcessedInput)
-            && is_process_belongs_to_user(uid, subDirectory->d_name, postProcessedInput)) {
+            is_valid_proc_directory(entry->d_name, postProcessedInput)
+            && is_process_belongs_to_user(uid, entry->d_name, postProcessedInput)) {
 
-            char *line = read_file(subDirectory->d_name, STAT_FILE_NAME);
+            char *line = read_file(entry->d_name, STAT_FILE_NAME);
 
             struct struct_output *node = malloc(sizeof *node);
             parse_stat_file(node, line);
 
-            line = read_file(subDirectory->d_name, CMDLINE_FILE_NAME);
+            line = read_file(entry->d_name, CMDLINE_FILE_NAME);
             node->command_line = line;
             if (!output) {
                 output = node;

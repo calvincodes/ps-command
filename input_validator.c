@@ -36,35 +36,35 @@ void validateUnprocessedInput(cmdLineArg unprocessedInputArg) {
 
     // If stateOptArg is passed, it should only be '-'
     if (unprocessedInputArg.stateOptArg != NULL
-            && strcmp(unprocessedInputArg.stateOptArg, "-") != 0) {
+        && strcmp(unprocessedInputArg.stateOptArg, "-") != 0) {
         fprintf(stderr, "Argument for s should be - only\n");
         exit(EXIT_FAILURE);
     }
 
     // If userTimeOptArg is passed, it should only be '-'
     if (unprocessedInputArg.userTimeOptArg != NULL
-            && strcmp(unprocessedInputArg.userTimeOptArg, "-") != 0) {
+        && strcmp(unprocessedInputArg.userTimeOptArg, "-") != 0) {
         fprintf(stderr, "Argument for U should be - only\n");
         exit(EXIT_FAILURE);
     }
 
     // If systemTimeOptArg is passed, it should only be '-'
     if (unprocessedInputArg.systemTimeOptArg != NULL
-            && strcmp(unprocessedInputArg.systemTimeOptArg, "-") != 0) {
+        && strcmp(unprocessedInputArg.systemTimeOptArg, "-") != 0) {
         fprintf(stderr, "Argument for S should be - only\n");
         exit(EXIT_FAILURE);
     }
 
     // If vMemOptArg is passed, it should only be '-'
     if (unprocessedInputArg.vMemOptArg != NULL
-            && strcmp(unprocessedInputArg.vMemOptArg, "-") != 0) {
+        && strcmp(unprocessedInputArg.vMemOptArg, "-") != 0) {
         fprintf(stderr, "Argument for v should be - only\n");
         exit(EXIT_FAILURE);
     }
 
     // If cmdLineOptArg is passed, it should only be '-'
     if (unprocessedInputArg.cmdLineOptArg != NULL
-            && strcmp(unprocessedInputArg.cmdLineOptArg, "-") != 0) {
+        && strcmp(unprocessedInputArg.cmdLineOptArg, "-") != 0) {
         fprintf(stderr, "Argument for c should be - only\n");
         exit(EXIT_FAILURE);
     }

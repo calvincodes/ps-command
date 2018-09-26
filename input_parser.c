@@ -8,7 +8,7 @@
 #include <string.h>
 #include "cmd_line_args.h"
 
-cmdLineArg parsedAndGetUnprocessedInput(int argc, char *argv[]) {
+cmdLineArg parseAndGetUnprocessedInput(int argc, char **argv) {
 
     int optionAsInt;
 
@@ -50,6 +50,5 @@ cmdLineArg parsedAndGetUnprocessedInput(int argc, char *argv[]) {
     }
 
     toString(unprocessedInputArg);
-
-    exit(EXIT_SUCCESS);
+    return unprocessedInputArg;
 }

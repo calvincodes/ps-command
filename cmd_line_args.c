@@ -11,23 +11,23 @@ cmdLineArg getDefaultInputArg() {
 
     cmdLineArg defaultInputArg;
 
-    defaultInputArg.processIdFlag = 0;
+    defaultInputArg.processIdFlag = false;
     defaultInputArg.processIdArg = NULL;
     defaultInputArg.pid = -1L; // As PIDs are always non negative, i.e. >= 0, hence using default = -1
 
-    defaultInputArg.stateFlag = 0;
+    defaultInputArg.stateFlag = false;
     defaultInputArg.stateOptArg = NULL;
 
-    defaultInputArg.userTimeFlag = 1;
+    defaultInputArg.userTimeFlag = true;
     defaultInputArg.userTimeOptArg = NULL;
 
-    defaultInputArg.systemTimeFlag = 0;
+    defaultInputArg.systemTimeFlag = false;
     defaultInputArg.systemTimeOptArg = NULL;
 
-    defaultInputArg.vMemFlag = 0;
+    defaultInputArg.vMemFlag = false;
     defaultInputArg.vMemOptArg = NULL;
 
-    defaultInputArg.cmdLineFlag = 1;
+    defaultInputArg.cmdLineFlag = true;
     defaultInputArg.cmdLineOptArg = NULL;
 
     return defaultInputArg;
@@ -35,6 +35,7 @@ cmdLineArg getDefaultInputArg() {
 
 void toString(cmdLineArg arg) {
 
+    printf("\n");
     printf("{\n");
         printf("\t processIdFlag: %d\n", arg.processIdFlag);
         printf("\t processIdArg: %s\n", arg.processIdArg);
@@ -57,4 +58,5 @@ void toString(cmdLineArg arg) {
         printf("\t cmdLineFlag: %d\n", arg.cmdLineFlag);
         printf("\t cmdLineOptArg: %s\n", arg.cmdLineOptArg);
     printf("\n" "}");
+    printf("\n");
 }

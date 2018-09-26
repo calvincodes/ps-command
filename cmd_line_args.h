@@ -7,6 +7,8 @@
 
 #endif //HW1_CMD_LINE_ARGS_H
 
+#include <stdbool.h>
+
 typedef struct cmdLineArg {
 
     bool processIdFlag; // Flag for process id argument

@@ -48,15 +48,15 @@ int main(int argc, char *argv[]) {
 
     cmdLineArg unprocessedInput = parseAndGetUnprocessedInput(argc, argv);
     validateUnprocessedInput(unprocessedInput);
-    struct_output *output = read_directory();
-    struct_output output_array[output->size];
+    struct struct_output *output = read_directory();
+    struct struct_output output_array[output->size];
     unsigned size = output->size;
     int index = 0;
     while(output != NULL){
         output_array[index] = *output;
         output = output->next;
     }
-    qsort(output_array, size, sizeof(struct_output), compare);
+    qsort(output_array, size, sizeof(struct struct_output), compare);
     printf("\n");
 
 }

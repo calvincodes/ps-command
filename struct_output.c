@@ -5,7 +5,7 @@
 #include <stdio.h>
 #include "struct_output.h"
 
-void print(struct_output arg, cmdLineArg cmd_args) {
+void print(struct struct_output arg, cmdLineArg cmd_args) {
 
     printf("\n");
     if(cmd_args.pid > -1) printf("%s", arg.pid);

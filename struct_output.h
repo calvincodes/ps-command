@@ -9,7 +9,7 @@
 #endif //HW1_STRUCT_OUTPUT_H
 
 
-typedef struct struct_output {
+struct struct_output {
 
     char *pid; // Displays process_id
     char *status; // Displays status of the process
@@ -19,8 +19,6 @@ typedef struct struct_output {
     char *command_line; // Command line that initiated the process
     unsigned size;
     struct struct_output *next;
+};
 
-
-} struct_output;
-
-void print(struct_output output, cmdLineArg cmd_args);
+void print(struct struct_output output, cmdLineArg cmd_args);

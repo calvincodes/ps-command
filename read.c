@@ -12,7 +12,7 @@
 #include <stdbool.h>
 #include <stdlib.h>
 #include "global.h"
-//#include "struct_output.h"
+#include "struct_output.h"
 
 bool is_valid_proc_directory(char *name){
     while(*name != '\0'){
@@ -47,7 +47,7 @@ char* read_file(char directory_name[], char file_name[CHAR_SIZE]){
 }
 
 
-struct_output* read_directory(){
+struct struct_output* read_directory(){
     // Holds directory structure of /proc folder
     DIR *proc;
     struct dirent *subDirectory;
@@ -151,15 +151,15 @@ int compare(const void * a, const void * b)
 }
 
 int main(){
-    struct_output *output = read_directory();
-    struct_output output_array[output->size];
+    struct struct_output *output = read_directory();
+    struct struct_output output_array[output->size];
     unsigned size = output->size;
     int index = 0;
     while(output != NULL){
         output_array[index] = *output;
         output = output->next;
     }
-    qsort(output_array, size, sizeof(struct_output), compare);
+    qsort(output_array, size, sizeof(struct struct_output), compare);
     printf("\n");
     for(int i=0;i<size;i++){
         // pass command_line argument then print will handle all conditions

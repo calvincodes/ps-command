@@ -9,9 +9,7 @@
 
 
 
-int CHAR_SIZE = 255;
-int ASCII_OF_0 = 48;
-int ASCII_OF_9 = 57;
+int SIZE_OF_CHAR = 255;
 char FULL_PATH[]  =  "/proc/";
 char STAT_FILE_NAME[] = "stat";
 char CMDLINE_FILE_NAME[] = "cmdline";

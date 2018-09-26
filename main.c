@@ -30,7 +30,7 @@ int main(int argc, char *argv[]) {
 
     if (output != NULL) {
         struct struct_output output_array[output->size];
-        unsigned size = output->size;
+        int size = output->size;
         int index = 0;
         while (output != NULL) {
             output_array[index] = *output;

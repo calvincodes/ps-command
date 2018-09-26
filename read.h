@@ -2,6 +2,8 @@
 // Created by Anshu on 9/24/18.
 //
 
+#include "struct_output.h"
+
 #ifndef HW1_READ_H
 #define HW1_READ_H
 
@@ -12,4 +14,4 @@
 
 #endif //UNTITLED_READDIR_H
 
-void read_directory();
+struct_output* read_directory();

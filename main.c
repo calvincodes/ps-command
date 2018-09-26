@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdbool.h>
+#include "parser.h"
 
 int validateInput(char input[]){
     return true;
@@ -29,14 +30,10 @@ int splitInput(char input[]){
 
 }
 
-//
-//int main() {
-//    char *input = readInput();
-//    int sizeOfInput = getSizeOfInput(input);
-//    if(validateInput(input) != 0){
-//        printf("Invalid Input");
-//    }
-//
-//
-//    return 0;
-//}
+
+
+int main(int argc, char *argv[]) {
+
+    cmdLineArg unprocessedInput = parsedAndGetUnprocessedInput(argc, argv);
+}
+

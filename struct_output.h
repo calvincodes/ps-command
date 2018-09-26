@@ -12,11 +12,13 @@
 typedef struct struct_output {
 
     char *pid; // Displays process_id
-    char status; // Displays status of the process
+    char *status; // Displays status of the process
     char *utime; // Displays the up time
     char *stime; //system time consumed so far by this process
     char *virtual_memory; //Virtual memory currently beings used
     char *command_line; // Command line that initiated the process
+    unsigned size;
+    struct struct_output *next;
 
 
 } struct_output;

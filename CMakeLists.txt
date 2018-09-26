@@ -3,6 +3,6 @@ project(hw1 C)
 
 set(CMAKE_C_STANDARD 99)
 
-add_executable(hw1 main.c input_parser.c input_parser.h cmd_line_args.c cmd_line_args.h input_validator.c input_validator.h input_post_processor.c input_post_processor.h read.c read.h struct_output.c struct_output.h proc_file_parser.c proc_file_parser.h access_validator.c access_validator.h)
+add_executable(hw1 driver.c input_parser.c input_parser.h struct_input.c struct_input.h input_validator.c input_validator.h input_post_processor.c input_post_processor.h read_proc_dir.c read_proc_dir.h struct_output.c struct_output.h proc_file_parser.c proc_file_parser.h access_validator.c access_validator.h)
 
 # gcc -o 537ps main.c input_parser.c cmd_line_args.c input_validator.c input_post_processor.c

@@ -5,7 +5,7 @@
 #include <stdio.h>
 #include "struct_output.h"
 
-void print(struct struct_output output, cmdLineArg cmd_args) {
+void print(struct struct_output output, struct_input cmd_args) {
 
     printf("%-*s",7, output.pid);
     if (cmd_args.stateFlag) printf("%-*s",3, output.status);

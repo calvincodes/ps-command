@@ -4,15 +4,15 @@
 
 #include <stdio.h>
 #include <stdbool.h>
-#include "cmd_line_args.h"
+#include "struct_input.h"
 
 /**
- * This method created a cmdLineArg with default values and all argument pointers as null
- * @return cmdLineArg with default values and all argument pointers as null
+ * This method created a inputArg with default values and all argument pointers as null
+ * @return inputArg with default values and all argument pointers as null
  */
-cmdLineArg getDefaultInputArg() {
+struct_input get_default_input_arg() {
 
-    cmdLineArg defaultInputArg;
+    struct_input defaultInputArg;
 
     defaultInputArg.processIdFlag = false;
     defaultInputArg.processIdArg = NULL;
@@ -37,7 +37,7 @@ cmdLineArg getDefaultInputArg() {
     return defaultInputArg;
 }
 
-void toString(cmdLineArg arg) {
+void to_string(struct_input arg) {
 
     printf("\n");
     printf("{\n");

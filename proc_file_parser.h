@@ -4,7 +4,9 @@
 
 #ifndef HW1_STRUCT_OUTPUT_H
 #define HW1_STRUCT_OUTPUT_H
+
 #include "struct_output.h"
+
 #endif //HW1_STRUCT_OUTPUT_H
 
 

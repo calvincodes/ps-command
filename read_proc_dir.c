@@ -2,7 +2,7 @@
 // Created by Anshu on 9/24/18.
 //
 
-#include "read.h"
+#include "read_proc_dir.h"
 #include <stdio.h>
 #include <sys/types.h>
 #include <dirent.h>
@@ -15,7 +15,6 @@
 #include "global.h"
 #include "proc_file_parser.h"
 #include "access_validator.h"
-//#include "struct_output.h"
 
 char *read_file(char directory_name[], char file_name[SIZE_OF_CHAR]) {
     FILE *file_pointer;
@@ -36,7 +35,7 @@ char *read_file(char directory_name[], char file_name[SIZE_OF_CHAR]) {
     return line;
 }
 
-struct struct_output *read_directory(cmdLineArg postProcessedInput) {
+struct struct_output *read_directory(struct_input postProcessedInput) {
     // Holds directory structure of /proc folder
     DIR *proc;
     struct dirent *entry;

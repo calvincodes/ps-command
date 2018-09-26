@@ -5,7 +5,7 @@
 #ifndef HW1_CMD_LINE_ARGS_H
 #define HW1_CMD_LINE_ARGS_H
 
-#include "cmd_line_args.h"
+#include "struct_input.h"
 
 #endif
 
@@ -14,4 +14,4 @@
 
 #endif //HW1_INPUT_VALIDATOR_H
 
-void validateUnprocessedInput(cmdLineArg unprocessedInputArg);
+void validate_unprocessed_input(struct_input unprocessedInputArg);

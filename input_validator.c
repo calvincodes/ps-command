@@ -11,9 +11,9 @@
  * For example,
  * 1. -v- is the only valid option-argument pair, or
  * 2. -p abc is not a valid argument for process id
- * @param unprocessedInputArg cmdLineArg object in vanilla format as typed by user
+ * @param unprocessedInputArg inputArg object in vanilla format as typed by user
  */
-void validateUnprocessedInput(cmdLineArg unprocessedInputArg) {
+void validate_unprocessed_input(struct_input unprocessedInputArg) {
 
     // Process Id flag has been passed as an input argument
     if (unprocessedInputArg.processIdFlag) {

@@ -6,19 +6,19 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <string.h>
-#include "cmd_line_args.h"
+#include "struct_input.h"
 
 /**
- * This methods parses the input arguments and formulates a corresponding cmdLineArg object
+ * This methods parses the input arguments and formulates a corresponding inputArg object
  * @param argc count of arguments passed along with the command
  * @param argv array of arguments passed along with the command
- * @return cmdLineArg object as per the user input
+ * @return inputArg object as per the user input
  */
-cmdLineArg parseAndGetUnprocessedInput(int argc, char **argv) {
+struct_input parse_and_get_unprocessed_input(int argc, char **argv) {
 
     int optionAsInt;
 
-    cmdLineArg unprocessedInputArg = getDefaultInputArg();
+    struct_input unprocessedInputArg = get_default_input_arg();
 
     while ((optionAsInt = getopt(argc, argv, "p:s::U::S::v::c::")) != -1) {
 

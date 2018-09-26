@@ -4,7 +4,7 @@
 
 #ifndef HW1_CMD_LINE_ARGS_H
 #define HW1_CMD_LINE_ARGS_H
-#include "cmd_line_args.h"
+#include "struct_input.h"
 #endif
 
 #ifndef HW1_STRUCT_OUTPUT_H
@@ -24,5 +24,5 @@ struct struct_output {
     struct struct_output *next;
 };
 
-void print(struct struct_output output, cmdLineArg cmd_args);
+void print(struct struct_output output, struct_input cmd_args);
 void print_test(struct struct_output output);

@@ -3,6 +3,7 @@
 //
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 #include "input_validator.h"
 
 void validateUnprocessedInput(cmdLineArg unprocessedInputArg) {
@@ -13,44 +14,44 @@ void validateUnprocessedInput(cmdLineArg unprocessedInputArg) {
     if (unprocessedInputArg.processIdFlag) {
 
         if (unprocessedInputArg.processIdArg == NULL) {
-            fprintf(stderr, "Pass process id with -p");
+            fprintf(stderr, "Pass process id with -p\n");
             exit(EXIT_FAILURE);
         }
 
-        int processId = atoi(unprocessedInputArg.processIdArg);
+        int processId = atoi (unprocessedInputArg.processIdArg);
         if (processId == 0 && unprocessedInputArg.processIdArg[0] != '0') {
-            fprintf(stderr, "Process id should be a number");
+            fprintf(stderr, "Process id should be a number\n");
             exit(EXIT_FAILURE);
         }
     }
 
     if (unprocessedInputArg.stateOptArg != NULL
-        && *unprocessedInputArg.stateOptArg != '-') {
-        fprintf(stderr, "Argument for s should be - only");
+        && strcmp(unprocessedInputArg.stateOptArg, "-") != 0) {
+        fprintf(stderr, "Argument for s should be - only\n");
         exit(EXIT_FAILURE);
     }
 
     if (unprocessedInputArg.userTimeOptArg != NULL
-        && *unprocessedInputArg.userTimeOptArg != '-') {
-        fprintf(stderr, "Argument for U should be - only");
+        && strcmp(unprocessedInputArg.userTimeOptArg, "-") != 0) {
+        fprintf(stderr, "Argument for U should be - only\n");
         exit(EXIT_FAILURE);
     }
 
     if (unprocessedInputArg.systemTimeOptArg != NULL
-        && *unprocessedInputArg.systemTimeOptArg != '-') {
-        fprintf(stderr, "Argument for S should be - only");
+        && strcmp(unprocessedInputArg.systemTimeOptArg, "-") != 0) {
+        fprintf(stderr, "Argument for S should be - only\n");
         exit(EXIT_FAILURE);
     }
 
     if (unprocessedInputArg.vMemOptArg != NULL
-        && *unprocessedInputArg.vMemOptArg != '-') {
-        fprintf(stderr, "Argument for v should be - only");
+        && strcmp(unprocessedInputArg.vMemOptArg, "-") != 0) {
+        fprintf(stderr, "Argument for v should be - only\n");
         exit(EXIT_FAILURE);
     }
 
     if (unprocessedInputArg.cmdLineOptArg != NULL
-        && *unprocessedInputArg.cmdLineOptArg != '-') {
-        fprintf(stderr, "Argument for c should be - only");
+        && strcmp(unprocessedInputArg.cmdLineOptArg, "-") != 0) {
+        fprintf(stderr, "Argument for c should be - only\n");
         exit(EXIT_FAILURE);
     }
 

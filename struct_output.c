@@ -7,7 +7,7 @@
 
 void print(struct struct_output output, cmdLineArg cmd_args) {
 
-    printf("%-*s:",7, output.pid);
+    printf("%-*s",7, output.pid);
     if (cmd_args.stateFlag) printf("%-*s",3, output.status);
     if (cmd_args.userTimeFlag) printf("utime=%-*s",4, output.utime);
     if (cmd_args.systemTimeFlag) printf("stime=%-*s",7, output.stime);

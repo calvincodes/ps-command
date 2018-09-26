@@ -2,6 +2,7 @@
 #include <stdbool.h>
 #include "input_parser.h"
 #include "input_validator.h"
+#include "input_post_processor.h"
 
 int validateInput(char input[]){
     return true;
@@ -36,4 +37,5 @@ int main(int argc, char *argv[]) {
 
     cmdLineArg unprocessedInput = parseAndGetUnprocessedInput(argc, argv);
     validateUnprocessedInput(unprocessedInput);
+    cmdLineArg postProcessedInput = getPostProcessedInput(unprocessedInput);
 }

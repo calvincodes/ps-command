@@ -49,6 +49,5 @@ cmdLineArg parseAndGetUnprocessedInput(int argc, char **argv) {
         }
     }
 
-    toString(unprocessedInputArg);
     return unprocessedInputArg;
 }

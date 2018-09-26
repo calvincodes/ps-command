@@ -1,9 +1,6 @@
 //
 // Created by Arpit Jain on 9/23/18.
 //
-
-#include <stdbool.h>
-
 #ifndef HW1_CMD_LINE_ARGS_H
 #define HW1_CMD_LINE_ARGS_H
 

@@ -2,12 +2,15 @@
 // Created by Anshu on 9/24/18.
 //
 
+#ifndef HW1_CMD_LINE_ARGS_H
+#define HW1_CMD_LINE_ARGS_H
 #include "cmd_line_args.h"
+#endif
+
 #ifndef HW1_STRUCT_OUTPUT_H
 #define HW1_STRUCT_OUTPUT_H
 
 #endif //HW1_STRUCT_OUTPUT_H
-
 
 struct struct_output {
 
@@ -22,3 +25,5 @@ struct struct_output {
 };
 
 void print(struct struct_output output, cmdLineArg cmd_args);
+void print_test(struct struct_output output);
+void print_header(cmdLineArg cmd_args);

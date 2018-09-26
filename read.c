@@ -12,7 +12,7 @@
 #include <stdbool.h>
 #include <stdlib.h>
 #include "global.h"
-#include "struct_output.h"
+//#include "struct_output.h"
 
 bool is_valid_proc_directory(char *name){
     while(*name != '\0'){
@@ -36,9 +36,6 @@ char* read_file(char directory_name[], char file_name[CHAR_SIZE]){
     file_pointer = fopen(full_path, "r");
     if(file_pointer != NULL){
         getline(&line, &len, file_pointer) ;
-
-
-        printf("Value of line %s\n", line);
     } else{
         perror("Failed to read the file");
     }
@@ -78,6 +75,7 @@ struct struct_output* read_directory(){
          * First argument - file descriptor to the parent directory
          * Second argument -  name of the entry
          * Third argument - Information about the entry being read
+         * If if fails then that means you don't have enough permission to view the directory
          */
         if (fstatat(dirfd(proc), subDirectory->d_name, &entry_info, 0) < 0) {
             continue;
@@ -88,34 +86,49 @@ struct struct_output* read_directory(){
          */
         if (S_ISDIR(entry_info.st_mode) && is_valid_proc_directory(subDirectory->d_name)) {
             char *line = read_file(subDirectory->d_name, STAT_FILE_NAME);
-            printf("%s\n", line);
+//            printf("%s\n", line);
             char *string_tokens;
+
+
             struct struct_output *node = malloc(sizeof *node);
+            printf("");
             string_tokens = strtok(line, " ");
+
+//            while(string_tokens != NULL){
+//                printf("Aanshu%s\n", string_tokens);
+//                string_tokens = strtok(NULL, " ");
+//            }
             int index = 1; //index of the values in the file
             while (string_tokens != NULL){
+//                printf("Aanshu%s\n", string_tokens);
                 switch (index){
                     case 1:
-                        *node->pid = *string_tokens;
+//                        printf("Hello %s", string_tokens);
+                        node->pid = string_tokens;
+//                        printf("Anshu %s", node->pid);
+
                         break;
                     case 3:
-                        *node->status = *string_tokens;
+                        node->status = string_tokens;
+
                         break;
                     case 14:
-                        *node->utime = *string_tokens;
+                        node->utime = string_tokens;
                         break;
                     case 15:
-                        *node->stime = *string_tokens;
+                        node->stime = string_tokens;
                         break;
                     case 23:
-                        *node->virtual_memory = *string_tokens;
+                        node->virtual_memory = string_tokens;
                         break;
                 }
                 string_tokens = strtok(NULL, " ");
                 index++;
             }
+//            print_test(*node);
             line = read_file(subDirectory->d_name, CMDLINE_FILE_NAME);
-            *node->command_line = *line;
+            node->command_line = line;
+//            print_test(*node);
             if(!output){
                 output = node;
                 head = node;
@@ -127,13 +140,6 @@ struct struct_output* read_directory(){
                 output = output ->next;
                 size++;
             }
-
-            printf("\n");
-
-            printf("%s\n", line);
-
-
-//            printf("%s \n",subDirectory->d_name);
         }
 
     }
@@ -141,30 +147,3 @@ struct struct_output* read_directory(){
     closedir(proc);
     return  head;
 }
-
-int compare(const void * a, const void * b)
-{
-    struct struct_output *o1 = (struct struct_output *)a;
-    struct struct_output *o2 = (struct struct_output *)b;
-    return strcmp(o1->pid, o2->pid);
-
-}
-
-int main(){
-    struct struct_output *output = read_directory();
-    struct struct_output output_array[output->size];
-    unsigned size = output->size;
-    int index = 0;
-    while(output != NULL){
-        output_array[index] = *output;
-        output = output->next;
-    }
-    qsort(output_array, size, sizeof(struct struct_output), compare);
-    printf("\n");
-    for(int i=0;i<size;i++){
-        // pass command_line argument then print will handle all conditions
-//        print(output_array[i]);
-    }
-
-}
-

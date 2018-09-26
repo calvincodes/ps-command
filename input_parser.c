@@ -24,22 +24,27 @@ cmdLineArg parseAndGetUnprocessedInput(int argc, char **argv) {
                 break;
 
             case 's':
+                unprocessedInputArg.stateFlag = true;
                 unprocessedInputArg.stateOptArg = optarg;
                 break;
 
             case 'U':
+                unprocessedInputArg.userTimeFlag = true;
                 unprocessedInputArg.userTimeOptArg = optarg;
                 break;
 
             case 'S':
+                unprocessedInputArg.systemTimeFlag = true;
                 unprocessedInputArg.systemTimeOptArg = optarg;
                 break;
 
             case 'v':
+                unprocessedInputArg.vMemFlag = true;
                 unprocessedInputArg.vMemOptArg = optarg;
                 break;
 
             case 'c':
+                unprocessedInputArg.cmdLineFlag = true;
                 unprocessedInputArg.cmdLineOptArg = optarg;
                 break;
 

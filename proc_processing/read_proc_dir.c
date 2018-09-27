@@ -12,7 +12,7 @@
 #include <stdbool.h>
 #include <stdlib.h>
 #include <unistd.h>
-#include "global.h"
+#include "../constants/global.h"
 #include "proc_file_parser.h"
 #include "access_validator.h"
 

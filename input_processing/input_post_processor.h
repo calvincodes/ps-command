@@ -5,7 +5,7 @@
 #ifndef HW1_CMD_LINE_ARGS_H
 #define HW1_CMD_LINE_ARGS_H
 
-#include "struct_input.h"
+#include "../entities/struct_input.h"
 
 #endif
 

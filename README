@@ -22,7 +22,7 @@ This project is divided in 3 major modules.
     * Displaying all the output on the screen with proper formatting and sequence.
     * Handling cases if the requested process is not found or if the files/directories being read do not have enough permission.
 
-* driver.c is the driver module for the entire project
+* **driver.c** is the driver module for the entire project
 
 ## Authors
 

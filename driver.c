@@ -1,12 +1,12 @@
 #include <stdio.h>
 #include <stdbool.h>
-#include "struct_output.h"
-#include "read_proc_dir.h"
+#include "entities/struct_output.h"
+#include "proc_processing/read_proc_dir.h"
 #include <stdlib.h>
 #include <string.h>
-#include "input_parser.h"
-#include "input_validator.h"
-#include "input_post_processor.h"
+#include "input_processing/input_parser.h"
+#include "input_processing/input_validator.h"
+#include "input_processing/input_post_processor.h"
 
 int compare_struct(const void *a, const void *b) {
     struct struct_output *o1 = (struct struct_output *) a;

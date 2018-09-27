@@ -6,7 +6,7 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <string.h>
-#include "struct_input.h"
+#include "../entities/struct_input.h"
 
 /**
  * This methods parses the input arguments and formulates a corresponding inputArg object

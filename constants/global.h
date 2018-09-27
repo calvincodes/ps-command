@@ -1,5 +1,6 @@
 //
-// Created by Anshu on 9/24/18.
+// Created by Anshu Verma on 9/24/18.
+// Co-author Arpit Jain
 //
 #ifndef HW1_GLOBAL_H
 #define HW1_GLOBAL_H

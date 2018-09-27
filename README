@@ -1,0 +1,23 @@
+# 537ps
+
+Custom ps command with various arguments
+
+## Task List
+
+This project is divided in 3 major modules.
+
+* entities: Comprises of struct_input and struct_output, which are the entity mapping of user input and display output respectively.
+
+* input_processing: Comprises of the following sub modules.
+** input_parser: Parses the input arguments and formulates a corresponding struct_input object.
+** input_validator: Validates if the arguments passed for various options are valid.
+** input_post_processor: Applies the functionality of relevant option arguments to the options.
+
+* proc_processing
+
+* driver.c is the driver module for the entire project
+
+## Authors
+
+* **Arpit Jain**
+* **Anshu Verma**

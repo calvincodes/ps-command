@@ -1,3 +1,7 @@
+//
+// Author Anshu Verma
+// Author Arpit Jain
+//
 #include <stdio.h>
 #include <stdbool.h>
 #include <stdlib.h>

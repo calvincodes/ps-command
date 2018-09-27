@@ -1,3 +1,6 @@
+# Co-author Anshu Verma
+# Co-author Arpit Jain
+
 cmake_minimum_required(VERSION 3.12)
 project(hw1 C)
 

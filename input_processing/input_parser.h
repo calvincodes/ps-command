@@ -1,11 +1,12 @@
 //
 // Created by Arpit Jain on 9/22/18.
+// Co-author Anshu Verma
 //
 
 #ifndef HW1_CMD_LINE_ARGS_H
 #define HW1_CMD_LINE_ARGS_H
 
-#include "cmd_line_args.h"
+#include "../entities/struct_input.h"
 
 #endif
 

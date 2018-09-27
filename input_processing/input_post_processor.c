@@ -20,8 +20,20 @@ struct_input get_post_processed_input(struct_input unprocessedInput) {
         unprocessedInput.pid = strtol(unprocessedInput.processIdArg, &ptr, 10);
     }
 
+    if (unprocessedInput.stateOptArg != NULL && *unprocessedInput.stateOptArg == '-') {
+        unprocessedInput.stateFlag = false;
+    }
+
     if (unprocessedInput.userTimeOptArg != NULL && *unprocessedInput.userTimeOptArg == '-') {
         unprocessedInput.userTimeFlag = false;
+    }
+
+    if (unprocessedInput.systemTimeOptArg != NULL && *unprocessedInput.systemTimeOptArg == '-') {
+        unprocessedInput.systemTimeFlag = false;
+    }
+
+    if (unprocessedInput.vMemOptArg != NULL && *unprocessedInput.vMemOptArg == '-') {
+        unprocessedInput.vMemFlag = false;
     }
 
     if (unprocessedInput.cmdLineOptArg != NULL && *unprocessedInput.cmdLineOptArg == '-') {

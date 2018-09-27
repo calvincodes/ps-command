@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include <stdbool.h>
-#include "entities/struct_output.h"
-#include "proc_processing/read_proc_dir.h"
 #include <stdlib.h>
 #include <string.h>
+#include "entities/struct_output.h"
+#include "proc_processing/read_proc_dir.h"
 #include "input_processing/input_parser.h"
 #include "input_processing/input_validator.h"
 #include "input_processing/input_post_processor.h"

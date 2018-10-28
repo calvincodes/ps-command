@@ -1,6 +1,6 @@
 # 537ps
 
-A simple version of the ps command, called 537ps which cabn be executed from a command line.
+A simple version of the ps command, called 537ps which can be executed from a command line.
 
 ## Task List
 
